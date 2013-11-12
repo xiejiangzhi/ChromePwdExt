@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Pwd",
+  "description": "Xjz password generator.",
+  "version": "0.1",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus"
+  ],
+
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": [
+      "content_menu.js"
+    ]
+  }
+}

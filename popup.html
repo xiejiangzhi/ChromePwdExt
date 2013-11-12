@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="Content-Language" content="zh-cn">
+
+    <link rel="stylesheet" type="text/css" href="./popup.css">
+
+    <script type='text/javascript' src='./md5.js'></script>
+    
+  </head>
+
+  <body>
+    <div class='main'>
+      <p><strong>Password generator</strong></p>
+
+      <div id='init_view'>
+        <label for='pwd_in'>* Origin password: </label>
+        <input type='password' id='pwd_in' />
+
+        <label for='repeat_pwd_in'>* Confirm password: </label>
+        <input type='password' id='repeat_pwd_in' />
+
+        <label for='salt_in'>Salt: </label>
+        <input type='text' id='salt_in' />
+
+        <button id='save_pwd'>Save</button>
+      </div>
+
+
+
+      <div id='generator_view'>
+          <label for='pwd_out'>Out: </label>
+          <input type='text' id='pwd_out' />
+
+          <button id='generate_btn'>Generate</button>
+          <a href='javascript: void(0)' id='reset'>Reset</a>
+        </ul>
+      </div>
+
+    </div>
+
+    <script type='text/javascript' src='./popup.js'></script>
+  </body>
+</html>

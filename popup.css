@@ -1,0 +1,47 @@
+
+
+html body {
+  width: 400px;
+  height: 260px;
+}
+
+.main {
+  width: 300px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+
+
+
+/** global style **/
+input {
+  width: 280px;
+  height: 28px;
+  margin-bottom: 10px;
+}
+
+
+
+
+/** init view **/
+
+#init_view label {
+  display: block;
+}
+
+#init_view #salt_in {
+  display: block;
+  margin-bottom: 10px;
+}
+
+
+
+
+/** generator **/
+
+#generator_view input {
+  display: block;
+  margin-bottom: 10px;
+}
