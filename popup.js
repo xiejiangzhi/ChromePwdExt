@@ -4,8 +4,6 @@
 
 
 
-  
-
 
   chrome.storage.sync.get(function(data){
     if (data.password_hash) {
@@ -65,21 +63,30 @@
     init_view.style.display = "none";
     generator_view.style.display = null;
 
+    var domain_in = document.getElementById('domain_in');
     var pwdout = document.getElementById('pwd_out');
     var gbtn = document.getElementById('generate_btn');
     var reset = document.getElementById('reset');
 
-    gbtn.onclick = function(){
-      chrome.tabs.executeScript({code: 'console.log(1)'});
+    chrome.tabs.query({active: true, currentWindow: true}, function(data){
+      set_domain(data[0]);
+    })
 
+    gbtn.onclick = function(){
+      var domain = domain_in.value;
       chrome.storage.sync.get(function(data){
-        pwdout.value = md5(data.password_hash);
+        pwdout.value = md5(data.password_hash + domain).slice(0, 16);
       });
     };
 
 
     reset.onclick = function(){
       run_init_view();
+    }
+
+
+    function set_domain(win){
+      domain_in.value = win.url.match(/https?:\/\/[\w-]+(\.[\w-]+)+/)[0];
     }
   }
   

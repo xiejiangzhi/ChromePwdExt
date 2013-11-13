@@ -8,6 +8,7 @@
   "permissions": [
     "storage",
     "activeTab",
+    "tabs",
     "contextMenus"
   ],
 
@@ -19,5 +20,15 @@
     "scripts": [
       "content_menu.js"
     ]
-  }
+  },
+
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
 }
