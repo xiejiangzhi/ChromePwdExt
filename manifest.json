@@ -2,13 +2,12 @@
   "manifest_version": 2,
 
   "name": "Pwd",
-  "description": "Xjz password generator.",
-  "version": "0.1",
+  "description": "Xjz Chrome password generator.",
+  "version": "0.2",
 
   "permissions": [
     "storage",
     "activeTab",
-    "tabs",
     "contextMenus"
   ],
 
@@ -26,7 +25,11 @@
   "content_scripts": [
     {
       "matches": ["http://*/*"],
-      "js": ["content.js"],
+      "js": [
+        "md5.js",
+        "helper.js",
+        "content.js"
+      ],
       "run_at": "document_start",
       "all_frames": true
     }

@@ -8,12 +8,6 @@
 
 
   function genericOnClick(info, tab) {
-    chrome.tabs.executeScript({code: 'console.log(' + info.srcUrl + ')'});
-
-    chrome.tabs.sendRequest(tab.id, {
-      method: 'paste',
-      info: info,
-      tab: tab
-    }, function(){});
+    chrome.tabs.sendRequest(tab.id, {method: 'paste'}, function(){});
   }
 }());

@@ -1,6 +1,7 @@
 (function(){
   var init_view = document.getElementById('init_view');
   var generator_view = document.getElementById('generator_view');
+  var message_box = document.getElementById('message_box');
 
 
 
@@ -19,6 +20,7 @@
   function run_init_view(){
     generator_view.style.display = "none";
     init_view.style.display = null;
+    message_box.innerHTML = '';
 
     var pwdin = document.getElementById('pwd_in');
     var repeat_pwd_in = document.getElementById('repeat_pwd_in');
@@ -40,7 +42,7 @@
 
     function valid_password(){
       if (pwdin.value.length == 0) {
-        alert('Please input password.');
+        message_box.innerHTML = 'Please input password.';
         return false;
       }
 
@@ -48,7 +50,7 @@
       if (pwdin.value == repeat_pwd_in.value) {
         return true;
       } else {
-        alert('Two password no same.');
+        message_box.innerHTML = 'Two password no same.';
         return false;  
       }
     }
@@ -62,20 +64,26 @@
   function run_generator_view(){
     init_view.style.display = "none";
     generator_view.style.display = null;
+    message_box.innerHTML = '';
 
     var domain_in = document.getElementById('domain_in');
+    var pwdlen = document.getElementById('pwd_len');
     var pwdout = document.getElementById('pwd_out');
     var gbtn = document.getElementById('generate_btn');
     var reset = document.getElementById('reset');
 
     chrome.tabs.query({active: true, currentWindow: true}, function(data){
-      set_domain(data[0]);
-    })
+      domain_in.value = ChromePwdGenerator.get_domain(data[0].url);
+    });
+
+    pwdlen.value = 16;
 
     gbtn.onclick = function(){
       var domain = domain_in.value;
       chrome.storage.sync.get(function(data){
-        pwdout.value = md5(data.password_hash + domain).slice(0, 16);
+        pwdout.value = ChromePwdGenerator.generate_pwd(
+          data.password_hash, domain, pwdlen.value
+        );
       });
     };
 
@@ -83,12 +91,6 @@
     reset.onclick = function(){
       run_init_view();
     }
-
-
-    function set_domain(win){
-      domain_in.value = win.url.match(/https?:\/\/[\w-]+(\.[\w-]+)+/)[0];
-    }
   }
   
 }());
-

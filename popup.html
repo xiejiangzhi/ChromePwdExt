@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./popup.css">
 
     <script type='text/javascript' src='./md5.js'></script>
+    <script type='text/javascript' src='./helper.js'></script>
     
   </head>
 
@@ -13,33 +14,36 @@
     <div class='main'>
       <p><strong>Password generator</strong></p>
 
+      <div id='message_box'></div>
+
       <div id='init_view'>
         <label for='pwd_in'>* Origin password: </label>
-        <input type='password' id='pwd_in' />
+        <input type='password' id='pwd_in' class='text' />
 
         <label for='repeat_pwd_in'>* Confirm password: </label>
-        <input type='password' id='repeat_pwd_in' />
+        <input type='password' id='repeat_pwd_in' class='text' />
 
         <label for='salt_in'>Salt: </label>
-        <input type='text' id='salt_in' />
+        <input type='text' id='salt_in' class='text' />
 
         <button id='save_pwd'>Save</button>
       </div>
 
 
-
       <div id='generator_view'>
           <label for='domain_in'>Domain: </label>
-          <input type='text' id='domain_in' />
+          <input type='text' id='domain_in' class='text' />
           
+          <label for='pwd_len'>Length: </label>
+          <input type='number' max=32 min=6 id='pwd_len' />
+
           <label for='pwd_out'>Out: </label>
-          <input type='text' id='pwd_out' />
+          <input type='text' id='pwd_out' class='text' />
 
           <button id='generate_btn'>Generate</button>
           <a href='javascript: void(0)' id='reset'>Reset</a>
         </ul>
       </div>
-
     </div>
 
     <script type='text/javascript' src='./popup.js'></script>

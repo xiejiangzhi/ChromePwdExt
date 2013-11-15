@@ -2,7 +2,7 @@
 
 html body {
   width: 400px;
-  height: 260px;
+  height: 300px;
 }
 
 .main {
@@ -16,7 +16,7 @@ html body {
 
 
 /** global style **/
-input {
+.text {
   width: 280px;
   height: 28px;
   margin-bottom: 10px;
@@ -25,7 +25,19 @@ input {
 
 
 
+/** message_box **/
+#message_box {
+  
+}
+
+
+
+
 /** init view **/
+
+#init_view {
+  
+}
 
 #init_view label {
   display: block;
@@ -40,6 +52,9 @@ input {
 
 
 /** generator **/
+#generator_view {
+
+}
 
 #generator_view input {
   display: block;

@@ -1,14 +1,15 @@
 (function(){
   chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
-    console.log(request);
-    debugger
-    
     switch(request.method) {
-    case "paste":
-      console.log(123);
-      break;
-    default:
-      console.log('321');
+    case 'paste':
+      chrome.storage.sync.get(function(data){
+        var domain = ChromePwdGenerator.get_domain(location.href);
+        var pwd = ChromePwdGenerator.generate_pwd(data.password_hash, domain);
+
+        document.activeElement.value += pwd;
+      });
+
+      sendResponse({ok: true});
     }
   });
 }());
