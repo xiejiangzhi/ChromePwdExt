@@ -6,7 +6,6 @@
   });
 
 
-
   function genericOnClick(info, tab) {
     chrome.tabs.sendRequest(tab.id, {method: 'paste'}, function(){});
   }

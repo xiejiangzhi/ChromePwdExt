@@ -12,12 +12,16 @@
   ],
 
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_icon": {
+      "19": "images/icon.png",
+      "28": "images/icon.png"
+    },
+    "default_popup": "views/popup.html"
   },
 
   "background": {
     "scripts": [
-      "content_menu.js"
+      "javascripts/content_menu.js"
     ]
   },
 
@@ -26,9 +30,9 @@
     {
       "matches": ["http://*/*"],
       "js": [
-        "md5.js",
-        "helper.js",
-        "content.js"
+        "javascripts/md5.js",
+        "javascripts/helper.js",
+        "javascripts/content.js"
       ],
       "run_at": "document_start",
       "all_frames": true

@@ -1,7 +1,7 @@
 Generate password
 =================
 
-Chrome extensions
+
 
 
 TODO
