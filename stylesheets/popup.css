@@ -1,12 +1,12 @@
 
 
 html body {
-  width: 400px;
-  height: 300px;
+  width: 450px;
+  height: 330px;
 }
 
 .main {
-  width: 300px;
+  width: 400px;
   height: 100%;
   overflow: hidden;
   margin: 0 auto;
@@ -19,15 +19,29 @@ html body {
 .text {
   width: 280px;
   height: 28px;
-  margin-bottom: 10px;
 }
 
+.input_field {
+  margin: 15px 0px;
+}
 
+.submit_input {
+  margin-left: 200px;
+}
+
+.btn {
+  padding: 5px 12px;
+}
+
+label {
+  display: inline-block;
+  min-width: 80px;
+}
 
 
 /** message_box **/
 #message_box {
-  
+  color: red;
 }
 
 
@@ -56,7 +70,12 @@ html body {
 
 }
 
-#generator_view input {
-  display: block;
-  margin-bottom: 10px;
+#generator_view .pwd_range {
+  padding: 10px 0px 0px 20px;
 }
+
+#generator_view .small_label {
+  min-width: 20px;
+}
+
+

@@ -13,36 +13,75 @@
   <body>
     <div class='main'>
       <p><strong>Password generator</strong></p>
+      <hr />
 
       <div id='message_box'></div>
 
       <div id='init_view'>
-        <label for='pwd_in'>* Origin password: </label>
-        <input type='password' id='pwd_in' class='text' />
+        <div class='input_field'>
+          <label for='pwd_in'>* Origin password: </label>
+          <input type='password' id='pwd_in' class='text' />
+        </div>
 
-        <label for='repeat_pwd_in'>* Confirm password: </label>
-        <input type='password' id='repeat_pwd_in' class='text' />
+        <div class='input_field'>
+          <label for='repeat_pwd_in'>* Confirm password: </label>
+          <input type='password' id='repeat_pwd_in' class='text' />
+        </div>
 
-        <label for='salt_in'>Salt: </label>
-        <input type='text' id='salt_in' class='text' />
+        <div class='input_field'>
+          <label for='salt_in'>Salt: </label>
+          <input type='text' id='salt_in' class='text' />
+        </div>
 
-        <button id='save_pwd'>Save</button>
+        <div class='submit_input'>
+          <button id='save_pwd' class='btn'>Save</button>
+        </div>
       </div>
 
 
       <div id='generator_view'>
+        <div class='input_field'>
           <label for='domain_in'>Domain: </label>
           <input type='text' id='domain_in' class='text' />
+        </div>
           
+        <div class='input_field'>
           <label for='pwd_len'>Length: </label>
-          <input type='number' max=32 min=6 id='pwd_len' />
+          <input type='number' max=32 min=6 id='pwd_len' /><br />
+        </div>
 
+        <div class='input_field'>
+          <label>PwdRange: </label>
+          <input type='checkbox' id='use_pwd_range' checked=1 /> Use default
+          
+          <div class='pwd_range'>
+            <input type='checkbox' name='pwd_range' value='Number' disabled=1 id='pwd_range_number' />
+            <label for='pwd_range_number' class='small_label'>Number</label>
+
+            <input type='checkbox' name='pwd_range' value='Char' disabled=1 id='pwd_range_char' />
+            <label for='pwd_range_char' class='small_label'>Char</label>
+
+            <input type='checkbox' name='pwd_range' value='Upcase' disabled=1 id='pwd_range_upcase' />
+            <label for='pwd_range_upcase' class='small_label'>Upcase</label>
+
+            <input type='checkbox' name='pwd_range' value='Symbol' disabled=1 id='pwd_range_symbol' />
+            <label for='pwd_range_symbol' class='small_label'>Symbol</label><br />
+
+            <label for='pwd_range_other' class='small_label'>Other: </label>
+            <input type='text' name='pwd_range' value='' disabled=1 id='pwd_range_other' />
+          </div>
+        </div>
+
+
+        <div class='input_field'>
           <label for='pwd_out'>Out: </label>
           <input type='text' id='pwd_out' class='text' />
+        </div>
 
-          <button id='generate_btn'>Generate</button>
+        <div class='submit_input'>
+          <button id='generate_btn' class='btn'>Generate</button>
           <a href='javascript: void(0)' id='reset'>Reset</a>
-        </ul>
+        </div>
       </div>
     </div>
 

@@ -72,6 +72,10 @@
     var gbtn = document.getElementById('generate_btn');
     var reset = document.getElementById('reset');
 
+    // PWD range
+    var pwd_range_inputs = document.getElementsByName('pwd_range');
+    var use_pwd_range = document.getElementById('use_pwd_range');
+
     chrome.tabs.query({active: true, currentWindow: true}, function(data){
       domain_in.value = ChromePwdGenerator.get_domain(data[0].url);
     });
@@ -82,7 +86,7 @@
       var domain = domain_in.value;
       chrome.storage.sync.get(function(data){
         pwdout.value = ChromePwdGenerator.generate_pwd(
-          data.password_hash, domain, pwdlen.value
+          data.password_hash, domain, pwdlen.value, pwd_range()
         );
       });
     };
@@ -90,6 +94,54 @@
 
     reset.onclick = function(){
       run_init_view();
+    }
+
+
+
+    // use pwd range
+    use_pwd_range.onclick = function(){
+      if (use_pwd_range.checked) {
+        for (var i = 0; i < pwd_range_inputs.length; i++) {
+          pwd_range_inputs[i].disabled = true;
+        }
+      } else {
+        for (var i = 0; i < pwd_range_inputs.length; i++) {
+          pwd_range_inputs[i].disabled = false;
+        }
+      }
+    }
+
+
+
+    function pwd_range(){
+      if (use_pwd_range.checked) { return null; }
+
+      var range = '';
+      for (var i = 0; i < pwd_range_inputs.length; i++) {
+        var el = pwd_range_inputs[i];
+        if (el.type == 'checkbox' && el.checked) {
+          range += range_values(el.value);
+        } else if (el.type == 'text') {
+          range += el.value;
+        }
+      }
+
+      return range.length > 0 ? range : null;
+    }
+
+    function range_values(name) {
+      switch(name) {
+      case "Number":
+        return "123456789";
+      case "Char":
+        return "abcdefghijklnmopqrstuvwxyz";
+      case "Upcase":
+        return "ABCDEFGHIJKLNMOPQRSTUVWXYZ";
+      case "Symbol":
+        return "~!@#$%^&*()_+-=[]{};':\",./<>?";
+      default:
+        return "";
+      }
     }
   }
   
